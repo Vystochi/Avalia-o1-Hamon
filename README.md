@@ -20,7 +20,8 @@ O objetivo é guiar a cobra pelo tabuleiro, coletando frutas para crescer de tam
 - Seta para esquerda: Movimenta a cobra para a esquerda.
 - Seta para direita: Movimenta a cobra para a direita.
 
-## ![image](https://github.com/user-attachments/assets/e985d81e-4350-4ef8-8fd6-e824a77830e4)
+ ### ![image](https://github.com/user-attachments/assets/dceb78c9-b1e4-4ac8-96e5-b41079e60873)
+
 
 Aproveite o jogo e boa sorte! 🐍
 
