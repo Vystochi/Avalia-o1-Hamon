@@ -6,19 +6,36 @@
     <title>Jogo da Cobrinha</title>
 </head>
 <style>
-    body{
+     body {
         display: flex;
-        align-self: center;
+        justify-content: center;
         align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #086808; 
     }
     canvas {
-    background-position: center;
-    border-radius: 20px;
-    border: 13px solid rgba(0, 0, 0, 0.103);
+        background-color: #54f154; 
+        border-radius: 20px;
+        border: 13px solid #065006; 
+    }
+    #pontuacao {
+        position: absolute;
+        top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        font-size: 50px;
+        font-style: sans-serif;
+        color: white;
     }
 </style>
 <body>
+    <div id="pontuacao">
+        Pontos: 0 | Recorde: 0
+    </div>
     <canvas id="jogoCanvas" width="800" height="400"></canvas>
     <script src="script.js"></script>
+    
 </body>
 </html>
