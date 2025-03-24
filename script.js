@@ -24,8 +24,7 @@ document.addEventListener('keydown', (e) => {
    }
 });
 
-const imgCobra = new Image();
-imgCobra.src = 'imagens/cobra.png';
+
 
 class Entidade {
    constructor(x, y, largura, altura) {
@@ -36,16 +35,20 @@ class Entidade {
    }
 }
 
+const imgCobra = new Image();
+imgCobra.src = 'imagens/cobra.png';
 
 class Cobra extends Entidade {
     constructor(x, y, largura, altura) {
         super(x, y, largura, altura);
+        this.velocidade = 3; // Velocidade inicial
     }
-   desenhar() {
-        ctx.save(); 
-        ctx.translate(this.x + this.largura / 2, this.y + this.altura / 2); 
-            if (this.direcao === 'W') {
-        ctx.rotate(-Math.PI / 2); //gira pra cima
+
+desenhar() {
+    ctx.save(); 
+    ctx.translate(this.x + this.largura / 2, this.y + this.altura / 2); 
+        if (this.direcao === 'W') {
+    ctx.rotate(-Math.PI / 2); //gira pra cima
     } else if (this.direcao === 'S') {
         ctx.rotate(Math.PI / 2); //gira pra baixo
     } else if (this.direcao === 'A') {
@@ -56,22 +59,24 @@ class Cobra extends Entidade {
     ctx.drawImage(imgCobra, -this.largura / 2, -this.altura / 2, this.largura, this.altura); // Desenha a imagem
     ctx.restore();
 }
+
 atualizar() {
     if (teclasPressionadas.KeyW) {
-        this.y -= 3; // velocidade da cobra para cima
+        this.y -= this.velocidade; // velocidade da cobra para cima
         this.direcao = 'W'; //muda a direção para cima
     } else if (teclasPressionadas.KeyS) {
-        this.y += 3; // velocidade da cobra para baixo
+        this.y += this.velocidade; // velocidade da cobra para baixo
         this.direcao = 'S'; //muda a direção para baixo
     } else if (teclasPressionadas.KeyA) {
-        this.x -= 3; // velocidade da cobra para a esquerda
+        this.x -= this.velocidade; // velocidade da cobra para a esquerda
         this.direcao = 'A'; //muda a direção para esquerda
     } else if (teclasPressionadas.KeyD) {
-        this.x += 3; // velocidade da cobra para a direita
+        this.x += this.velocidade; // velocidade da cobra para a direita
         this.direcao = 'D'; //muda a direção para direita
     }
 }
-   verificarColisao(comida){
+
+verificarColisao(comida){
        if(
            this.x < comida.x + comida.largura &&
            this.x + this.largura > comida.x &&
@@ -81,11 +86,13 @@ atualizar() {
            this.#houveColisao(comida)
        }
    }
-   verificarColisaoComParede(){ //verifica se a cobra bateu na parede
+
+verificarColisaoComParede(){ //verifica se a cobra bateu na parede
     if (this.x < 0 || this.x + this.largura > canvas.width || this.y < 0 || this.y + this.altura > canvas.height) {
         location.reload(); //recarrega a pagina ao morrer
     }
 }
+
 #houveColisao(comida) {
     comida.x = Math.random() * (canvas.width - 10);
     comida.y = Math.random() * (canvas.height - 10); //gera a fruta aleatoriamente
@@ -103,15 +110,15 @@ imgFruta.src = 'imagens/fruta.webp';
 
 class Comida extends Entidade {
    constructor() {
-       super(Math.random()*canvas.width-10, Math.random()*canvas.height-10, 40, 40) //tamanho da fruta
+       super(Math.random()*canvas.width-40, Math.random()*canvas.height-40, 30, 30) //tamanho da fruta
    }
-   desenhar() {
+desenhar() {
        ctx.drawImage(imgFruta, this.x, this.y, this.largura, this.altura) //foto da fruta
    }
 }
 
 
-const cobra = new Cobra(100, 200, 74, 74) //tamanho da cobra
+const cobra = new Cobra(100, 200, 70, 60) //tamanho da cobra
 const comida = new Comida()
 
 
