@@ -1,4 +1,4 @@
-# Avaliacao1-Hamon
+## Avaliacao 1-Hamon 24/03/2025
 # Snake Game
 
 Bem-vindo ao jogo Snake Game! Este é apenas um projeto criado para uma avaliação usando o Visual Studio. Jogue e veja até onde consegue ir sem colidir com as paredes.
